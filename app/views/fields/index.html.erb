@@ -1,0 +1,10 @@
+<h1>Fields#index</h1>
+<p>Find me in app/views/fields/index.html.erb</p>
+
+<% @fields.each do |field| %>
+관심영역: <%= field.body %><br>
+<a href="/fields/show/<%= field.id %>">보기</a>
+<a href="/fields/edit/<%= field.id %>">수정하기</a>
+<a href="/fields/delete/<%= field.id %>">삭제하기</a>
+<hr>
+<% end %>

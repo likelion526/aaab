@@ -1,0 +1,10 @@
+<h1>Fields#edit</h1>
+<p>Find me in app/views/fields/edit.html.erb</p>
+
+
+<form method="POST" action="/fields/update/<%= @field.id %>">
+	<input name="id" value="<%= @field.id %>" type="hidden">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    내용: <input type="text" name="body" value="<%= @field.body %>">
+    <button type="submit">수정완료</button>
+</form>

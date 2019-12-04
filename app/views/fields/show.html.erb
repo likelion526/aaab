@@ -1,0 +1,29 @@
+<h1>Fields#show</h1>
+<p>Find me in app/views/fields/show.html.erb</p>
+
+
+<p>
+  <strong>내용:</strong>
+  <%= @field.body %>
+</p>
+
+<p>
+<form action="<%= field_habits_path(@field) %>" method="post" >
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  습관: <input type="text" name="body">
+  참고사항: <input type="text" name="standard">
+  <input type="submit">
+</form>
+</p>
+
+<!--<a href="/fields/index">뒤로가기</a>-->
+<%= link_to "뒤로가기", fields_path %>
+<hr>
+<p>
+  <!--< Habit.where(field_id: @field.id).each do |habit| %>-->
+  <% @field.habits.each do |habit| %>
+  <strong>습관:</strong> <%= habit.body %> |
+  <strong>참고사항:</strong> <%= habit.standard %><br>
+
+  <% end %>
+</p>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyString
+  field: one
+  habit: one
+
+two:
+  body: MyString
+  field: two
+  habit: two
