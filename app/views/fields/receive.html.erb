@@ -15,16 +15,22 @@
 
 <form action="/goals/choice" method="POST">
    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <% Habit.where(field_id: @selected).each do |habit| %> 
-	     <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" name="selector[]" value="<%=habit.id%>" /><%=habit.body%> <i class="input-helper"></i></label> </div>
-	    <% end %> <br> <!-- param[:selector] = A -->
-	 
+   <% Field.where(id: @selected).each do |field| %>
+   <h5><%= field.body %></h5>
+   <% field.habits.each do |habit| %>
+<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" name="selector[]" value="<%=habit.id%>" /> <%= habit.body %> <i class="input-helper"></i></label><br> </div>
+
+   <% end %>
+   <% end %>
+   
+	   <br> <!-- param[:selector] = A -->
+	 <br>
 당신의 꿈(정체성)은 무엇인가요?<br><br>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <% if current_user.identities.present? %>
         <input type="text" name="identity" value="<%= current_user.identities.first.body %>">
     <% else %>
-        <input type="text" name="identity" value="ex)사업가, 학자, 리더 등">
+        <input type="text" name="identity" placeholder="ex)사업가, 학자, 리더 등">
     <% end %>
 <br>
 <br>

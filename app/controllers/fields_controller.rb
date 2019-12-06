@@ -17,6 +17,7 @@ class FieldsController < ApplicationController
 
   def receive
     @selected = params[:selector]
+    
   end
 
   

@@ -1,40 +1,15 @@
-오늘의 달성률! 
+<% temp = Check.where(check_date: Time.current, user_id: current_user.id) %>
 
+<% betas = User.where(id: current_user) %> 
+           <h4><%= betas&.first&.name %>님의</h4><br><br>
+           
 
-
-<h3>일주일 동안의 성취기록 </h3>
-일주일 동안의 실제 달성 개수 : 
-<%= @week_count %> 
-<br>
-일주일 동안의 목표 달성 개수 : 
-<%= @weekgoal_count %>
-<br>
-일주일 동안의 성취율: 
-<%= number_to_percentage(@week_percent*100,  precision: 0) %>
-<br>
-
- 
-<h3>한달 동안의 성취기록</h3>
-<div><a href="/checks/monthly" > 월간 성취기록 보기</a></div>
-<div>
-
-<h3>최근 일주일 이내의 성취율</h3>
-<% current_user.checks.group("check_date").each do |check| %>
-    <% temp = Check.where(check_date: check.check_date) %>
-    -날짜 : <%= check.check_date %>
-    <br>
-    -실천 개수 : <%= temp.count %>
-        <br>
-    -실천한 것 : 
-    <%# temp.map{ |a| a.answer.question.body } %>
-    <% temp.map{ |a| a.goal.habit.body }.each do |t| %>
-      
- <%= t %>
-    <% end %>
-    <br>
-<% end %>
-</div>
-
-
-
-
+오늘의 달성률은 <br>
+<h1><%= number_to_percentage(temp.count.to_f/@daygoal_count*100, precision: 0) %></h1><br>
+오늘의 목표달성 개수는 <br>
+<h1><%= temp.count %>개</h1><br>
+입니다!
+<br><br>
+<a href="/checks/monthly">
+<button type="button" class="btn btn-primary btn-lg">주간/월간 달성보기</button>
+</a>
