@@ -10,16 +10,18 @@
 	<p><%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: { confirm: "로그아웃 할까요?" }%></p>
 <% else%>
 	<p><%= link_to "로그인", new_user_session_path %></p>
+	<p><%= link_to "회원가입", new_user_registration_path %></p>
 <% end %>
 
 
 <hr>
 <br>
+<% if user_signed_in? %>
 <a href="/goals/receiver">나의 목표습관 바로가기</a>
 <br>
 <%= link_to "습관 선택하기", fields_choice_path, method: "get" %>
 <br>
 <a href="/checks/index"> 나의 습관 달성 기록</a>
 <br>
-
+<% end %>
 

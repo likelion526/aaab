@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  check_date: 2019-12-06
+  body: 1
+  user: one
+  goal: one
+
+two:
+  check_date: 2019-12-06
+  body: 1
+  user: two
+  goal: two

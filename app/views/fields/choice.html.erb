@@ -1,6 +1,36 @@
-<h1>Fields#choice</h1>
-<p>Find me in app/views/fields/choice.html.erb</p>
+<div class="page-content page-container" id="page-content">
+    <!--<div class="padding">-->
+        <div class="row container d-flex justify-content-center">
+            <div class="col-lg-12">
+                <div class="card px-3">
+                    <div class="card-body">
+                        <h1 class="card-title">관심영역 선택</h1>
+                  
+                        <div class="list-wrapper">
+                            <ul class="d-flex flex-column-reverse todo-list">
+                                <li>
+                                    
+                                    <form method="GET" action='/fields/receive'>
+                                    	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	                                    	<% @fields.each do |field| %>
+		                                    <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" name="selector[]" value="<%=field.id%>"/> <%=field.body%> <i class="input-helper"></i></label> </div> 
+                                         <% end %> <br>
+                       
+ <button type="submit" class="btn btn-primary">제출하기</button>
+      
+                                    </form> </li>
+                                
+                             
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--</div>-->
+</div>
 
+<<<<<<< HEAD
 <div class="container">	
 <form method="GET" action='/fields/receive'>
 	<div class="row">
@@ -15,3 +45,5 @@
 
 </form>
 </div>
+=======
+>>>>>>> 6f777b953e438fcc08149a18cb116713107b3703

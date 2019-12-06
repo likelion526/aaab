@@ -1,0 +1,38 @@
+<div class="grid">
+    <div class="box a">
+        <p class="ratio">주간 성취율</p>
+        <p>일주일 동안의 실제 달성 개수 :  <%= @week_count %><br> 
+        일주일 동안의 목표 달성 개수 : <%= @weekgoal_count %> <br>
+        일주일 동안의 성취율: <%= number_to_percentage(@week_percent*100,  precision: 0) %> </p><hr>
+    
+        <p class="ratio"> 
+         <br>
+           당신은 훌륭한 
+
+           <% datas = Identity.where(user: current_user) %> 
+           <%= datas&.first&.body %> 입니다!
+  
+    
+    </p>    
+    </div>
+    
+    <div class="box b">
+        <%= month_calendar do |date| %>
+            <% temp = Check.where(check_date: Time.now.beginning_of_month + (date-1).day, user_id: current_user.id) %>
+                <% if temp.count.to_f/@daygoal_count >= 0.7 %>
+                    <span class="w3-badge exel">
+                        <%= date %>
+                    </span>
+                <% elsif temp.count.to_f/@daygoal_count >= 0.4 %>
+                    <span class="w3-badge good">
+                        <%= date %>
+                    </span>
+                <% else %>
+                    <span class="w3-badge okay">
+                        <%= date %>
+                    </span>
+                <% end %>
+                <%= number_to_percentage(temp.count.to_f/@daygoal_count*100, precision: 0) %>
+        <% end %>
+    </div>
+<br>

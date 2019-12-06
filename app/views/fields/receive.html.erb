@@ -1,23 +1,52 @@
-<h1>Fields#receive</h1>
-<p>Find me in app/views/fields/receive.html.erb</p>
-
-<h1>습관 선택 </h1>
+<div class="page-content page-container" id="page-content">
+    <!--<div class="padding">-->
+        <div class="row container d-flex justify-content-center">
+            <div class="col-lg-12">
+                <div class="card px-3">
+                    <div class="card-body">
+                        <h1 class="card-title">목표습관 선택</h1>
+                  
+                        <div class="list-wrapper">
+                            <ul class="d-flex flex-column-reverse todo-list">
+                                <li>
+                                    
 
 <% if @selected != nil %>
 
 <form action="/goals/choice" method="POST">
    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <% Habit.where(field_id: @selected).each do |habit| %> 
-	    <input type="checkbox" name="selector[]" value="<%=habit.id%>" /><%=habit.body%> <br> <!-- param[:selector] = A -->
+   <% Field.where(id: @selected).each do |field| %>
+   <h5><%= field.body %></h5>
+   <% field.habits.each do |habit| %>
+<div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" name="selector[]" value="<%=habit.id%>" /> <%= habit.body %> <i class="input-helper"></i></label><br> </div>
 
-	<% end %> 
-<br><input type="submit" value="Send to receiver" />
+   <% end %>
+   <% end %>
+   
+	   <br> <!-- param[:selector] = A -->
+	 <br>
+당신의 꿈(정체성)은 무엇인가요?<br><br>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <% if current_user.identities.present? %>
+        <input type="text" name="identity" value="<%= current_user.identities.first.body %>">
+    <% else %>
+        <input type="text" name="identity" placeholder="ex)사업가, 학자, 리더 등">
+    <% end %>
+<br>
+<br>
+ <button type="submit" class="btn btn-primary">제출하기</button>
 
 </form>
 <% end %> 
 
-<!--당신의 정체성을 입력하세요.<br>-->
-<!--      <= hidden_field_tag :authenticity_token, form_authenticity_token %>-->
-<!--     <textarea name="identity"> < Identity.where(user_id: current_user.id).each do |identity| %>-->
-<!--     <= identity.body %> < end %></textarea>-->
-  
+</li>
+                                
+                             
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--</div>-->
+</div>

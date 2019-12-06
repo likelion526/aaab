@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_06_094912) do
+ActiveRecord::Schema.define(version: 2019_12_06_134102) do
+
+  create_table "checks", force: :cascade do |t|
+    t.date "check_date"
+    t.integer "body"
+    t.integer "user_id"
+    t.integer "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_checks_on_goal_id"
+    t.index ["user_id"], name: "index_checks_on_user_id"
+  end
 
   create_table "fields", force: :cascade do |t|
     t.string "body"
@@ -37,12 +48,22 @@ ActiveRecord::Schema.define(version: 2019_12_06_094912) do
     t.index ["field_id"], name: "index_habits_on_field_id"
   end
 
+  create_table "identities", force: :cascade do |t|
+    t.string "body"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_identities_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
+    t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
