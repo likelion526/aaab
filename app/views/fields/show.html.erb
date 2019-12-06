@@ -23,7 +23,7 @@
   <!--< Habit.where(field_id: @field.id).each do |habit| %>-->
   <% @field.habits.each do |habit| %>
   <strong>습관:</strong> <%= habit.body %> |
-  <strong>참고사항:</strong> <%= habit.standard %><br>
-
+  <strong>참고사항:</strong> <%= habit.standard %>
+  <%= link_to "삭제", field_habit_path(@field.id, habit.id), method: "delete" %><br>
   <% end %>
 </p>

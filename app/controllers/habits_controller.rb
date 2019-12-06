@@ -10,13 +10,10 @@ class HabitsController < ApplicationController
   end
 
   def destroy
-    @field = Field.find(params[:id])
-    @comment = @field.comments
-    @comment.find(params[:id]).destroy
+    @field = Field.find(params[:field_id])
+    @comments = @field.habits
+    @comments.find(params[:id]).destroy
     
     redirect_to request.referrer
-  end
-
-  def update
   end
 end

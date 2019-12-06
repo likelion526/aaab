@@ -1,2 +1,14 @@
 <h1>Goals#receiver</h1>
 <p>Find me in app/views/goals/receiver.html.erb</p>
+
+<h1>나의 목표 습관 </h1>
+<h2> 오늘 실천한 목표 습관에 체크해주세요! </h2>
+
+<form method="POST" action='/checks/choice'>
+     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <% current_user.goals.each do |goal| %>
+      <input type="checkbox" name="selector_a[]" value="<%= goal.id %>" /><%=goal.habit.body %> <br> 
+    <% end %> 
+    <input type="submit" value="Send to receiver" />
+</form>
+

@@ -1,2 +1,23 @@
 <h1>Fields#receive</h1>
 <p>Find me in app/views/fields/receive.html.erb</p>
+
+<h1>습관 선택 </h1>
+
+<% if @selected != nil %>
+
+<form action="/goals/choice" method="POST">
+   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <% Habit.where(field_id: @selected).each do |habit| %> 
+	    <input type="checkbox" name="selector[]" value="<%=habit.id%>" /><%=habit.body%> <br> <!-- param[:selector] = A -->
+
+	<% end %> 
+<br><input type="submit" value="Send to receiver" />
+
+</form>
+<% end %> 
+
+<!--당신의 정체성을 입력하세요.<br>-->
+<!--      <= hidden_field_tag :authenticity_token, form_authenticity_token %>-->
+<!--     <textarea name="identity"> < Identity.where(user_id: current_user.id).each do |identity| %>-->
+<!--     <= identity.body %> < end %></textarea>-->
+  

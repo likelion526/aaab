@@ -1,5 +1,5 @@
 class FieldsController < ApplicationController
-   before_action :set_field, only: [:show, :edit, :update]
+  # before_action :set_field, only: [:show, :edit, :update]
   
   def choice
     @fields= Field.all
@@ -16,6 +16,7 @@ class FieldsController < ApplicationController
   end
 
   def receive
+    @selected = params[:selector]
   end
 
   
@@ -28,6 +29,7 @@ class FieldsController < ApplicationController
   end
   
   def update
+    @field = Field.find(params[:id])
       @field.body = params[:body]
       @field.save
       
@@ -35,15 +37,24 @@ class FieldsController < ApplicationController
   end
   
   def show
+    @field = Field.find(params[:id])
     @habit = Habit.new
   end
   
   def edit
+    @field = Field.find(params[:id])
   end
   
-  private
-    def set_field
-      @field = Field.find(params[:id])
-    end
+  def destroy
+    @field = Field.find(params[:id])
+    @field.destroy
+    
+    redirect_to "/fields/index"
+  end
+  
+  # private
+  #   def set_field
+  #     @field = Field.find(params[:id])
+  #   end
   
 end
