@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
-  
-  
+
+  get 'ranks/index'
+  get 'ranks/field'
+  get 'goals/inputneed'
   post 'goals/choice'
   get 'goals/receiver'
  
