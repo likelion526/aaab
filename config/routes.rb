@@ -1,18 +1,14 @@
 Rails.application.routes.draw do
   
-<<<<<<< HEAD
-  
   root "mains#index"
   get 'mains/index'
   post 'goals/choice'
-=======
-get 'ranks/index'
+  get 'ranks/index'
   get 'ranks/field'
 
   ####### goals #######
   post 'goals/choice' 
   get 'goals/inputneed'
->>>>>>> 6f777b953e438fcc08149a18cb116713107b3703
   get 'goals/receiver'
   
   ########## check ###########
@@ -51,11 +47,7 @@ get 'ranks/index'
   
   
   devise_for :users
-<<<<<<< HEAD
   resources :fields do
-=======
-    resources :fields do
->>>>>>> 6f777b953e438fcc08149a18cb116713107b3703
     resources :habits
   end
   
