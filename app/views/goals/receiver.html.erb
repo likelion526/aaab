@@ -1,14 +1,32 @@
-<h1>Goals#receiver</h1>
-<p>Find me in app/views/goals/receiver.html.erb</p>
-
-<h1>나의 목표 습관 </h1>
-<h2> 오늘 실천한 목표 습관에 체크해주세요! </h2>
+<div class="page-content page-container" id="page-content">
+    <!--<div class="padding">-->
+        <div class="row container d-flex justify-content-center">
+            <div class="col-lg-12">
+                <div class="card px-3">
+                    <div class="card-body">
+                        <h1 class="card-title">습관 실천여부 체크 <br><br>오늘 실천한 목표 습관에 체크해주세요! </h1>
+                  
+                        <div class="list-wrapper">
+                            <ul class="d-flex flex-column-reverse todo-list">
+                                <li>
+                                    
 
 <form method="POST" action='/checks/choice'>
      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <% current_user.goals.each do |goal| %>
-      <input type="checkbox" name="selector_a[]" value="<%= goal.id %>" /><%=goal.habit.body %> <br> 
+      <div class="form-check"> <label class="form-check-label"> <input class="checkbox" type="checkbox" name="selector_a[]" value="<%= goal.id %>" /><%=goal.habit.body %> <i class="input-helper"></i></label> </div><br> 
     <% end %> 
-    <input type="submit" value="Send to receiver" />
+<button type="submit" class="btn btn-primary">제출하기</button>
 </form>
+</li>
+                                
+                             
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--</div>-->
+</div>
 

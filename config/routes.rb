@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
   
-
-  get 'ranks/index'
+get 'ranks/index'
   get 'ranks/field'
+
+  ####### goals #######
+  post 'goals/choice' 
   get 'goals/inputneed'
-  post 'goals/choice'
   get 'goals/receiver'
+  
+  ########## check ###########
  
+  get 'goals/inputneed'
+  post 'checks/choice' => "checks#choice"
+  get 'checks/index'
+  get 'checks/monthly'
+  
   ########## field ###########
   
   get 'fields/index'
@@ -33,8 +41,9 @@ root 'fields#main'
   
   
   devise_for :users
-   resources :fields do
+    resources :fields do
     resources :habits
   end
   
 end
+
