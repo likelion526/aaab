@@ -2,10 +2,10 @@
 
 one:
   body: MyString
-  field: one
+  user: one
   habit: one
 
 two:
   body: MyString
-  field: two
+  user: two
   habit: two

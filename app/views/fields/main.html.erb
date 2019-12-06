@@ -3,8 +3,17 @@
 
 
 <h2> 당신을 위한 습관 도우미! </h2>
-<h1> "리틀빅"입니다! </h1>
+<h1> "리틀빅"입니다! </h1><br>
 
+<% if user_signed_in? %>
+	<p>현재 로그인된 유저의 이메일: <%= current_user.email %></p>
+	<p><%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: { confirm: "로그아웃 할까요?" }%></p>
+<% else%>
+	<p><%= link_to "로그인", new_user_session_path %></p>
+<% end %>
+
+
+<hr>
 <br>
 <a href="/goals/receiver">나의 목표습관 바로가기</a>
 <br>
