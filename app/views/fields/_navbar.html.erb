@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom-bg">
+  <a class="navbar-brand" href="/fields/index">리틀빅</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-link">
+        <a class="nav-link" href="/goals/receiver">진행중인 습관 <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-link">
+        <a class="nav-link" href="/fields/choice">습관 선택하기<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-link">
+        <a class="nav-link" href="#">달성기록 보기(링크 달아야함)<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav right">
+            <% if user_signed_in? %>
+              <li class="nav-link"><%= current_user.email %>님 안녕하세요.</li>
+              <li class="nav-link"><%= link_to '로그아웃', destroy_user_session_path, method: 'delete' %></li>
+            <% else %>
+              <li class="nav-link"><a href="/users/sign_in">로그인</a></li>
+              <li class="nav-link"><a href="/users/sign_up">회원가입</a></li>
+            <% end %>
+          </ul>
+
+  </div>
+</nav>

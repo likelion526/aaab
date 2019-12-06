@@ -1,13 +1,17 @@
 <h1>Fields#choice</h1>
 <p>Find me in app/views/fields/choice.html.erb</p>
 
-<h1>영역 선택</h1>
-
+<div class="container">	
 <form method="GET" action='/fields/receive'>
+	<div class="row">
 	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	<div class="col-md-6 col-lg-4">
 		<% @fields.each do |field| %>
-		<input type="checkbox" name="selector[]" value="<%=field.id%>" /><%=field.body%> <br> <!-- param[:selector] = A -->
+		<input type="checkbox" name="selector[]" value="<%=field.id%>" /><%=field.body%> <br>
+		</div>
 <% end %>
-    
+</div>   
 <input type="submit" value="Send to receiver"/>
+
 </form>
+</div>
